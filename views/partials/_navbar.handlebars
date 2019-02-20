@@ -1,30 +1,33 @@
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ea0976;">
-  <a class="navbar-brand" href="#">Navbar</a>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropdownMenuLink">dropdown-item</a>
-        <div class="dropdown-menu">
-          <a href="" class="dropdown-item">Item 1</a>
-          <a href="" class="dropdown-item">Item 2</a>
-          <div class="dropdown-divider"></div>
-          <a href="" class="dropdown-item">Log Out</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
-    </form>
+<nav class="grey darken-3">
+  <div class="container">
+    <div class="nav-wrapper">
+      <a href="/stories" class="brand-logo center">StoryBooks</a>
+      <a href="#" data-activates="main-menu" class="button-collapse show-on-large"><i class="fa fa-bars"></i></a>
+      <!-- RIGHT NAV -->
+      <ul class="right hide-on-small-only">
+        {{#if user}}
+        <li><a href="/dashboard">Welcome {{user.firstName}}</a></li>
+        <li><a href="/auth/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
+        {{else}}
+        <li><a href="/stories"><i class="fa fa-book"></i> Public Stories</a></li>
+        {{/if}}
+      </ul>
+      <!-- SIDE MENU -->
+      <ul class="side-nav" id="main-menu">
+        {{#if user}}
+        {{else}}
+        <li>
+          <a class="btn red darken-1" href="/auth/google"><i class="fa fa-google left"></i> Login With Google</a>
+        </li>
+        {{/if}}
+        <li><a href="/stories"><i class="fa fa-book"></i> Public Stories</a></li>
+        {{#if user}}
+        <li class="divider"></li>
+        <li><a href="/dashboard"><i class="fa fa-cog"></i> Dashboard</a></li>
+        <li><a href="/stories/my"><i class="fa fa-user"></i> My Stories</a></li>
+        <li><a href="/auth/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
+        {{/if}}
+      </ul>
+    </div>
   </div>
 </nav>
